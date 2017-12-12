@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `region` (
   `lat` varchar(50) NOT NULL DEFAULT '',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COMMENT='区域';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='区域';
 
 INSERT INTO `region` (`code`, `name`, `parent_code`, `lng`, `lat`, `created_at`, `updated_at`)
 VALUES
