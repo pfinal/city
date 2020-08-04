@@ -8,9 +8,9 @@
     * [中华人民共和国国家统计局-统计用区划和城乡划分代码](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/)
     * [中华人民共和国国家统计局-统计用区划代码和城乡划分代码编制规则](http://www.stats.gov.cn/tjsj/tjbz/200911/t20091125_8667.html)
 *   已更新至：
-    * [最新县及县以上行政区划代码（截止时间：2016-07-31，发布时间：2017-03-10）](http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201703/t20170310_1471429.html)
-    * [2016年统计用区划代码和城乡划分代码（截止时间：2016-07-31，发布时间：2017-05-16）](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/index.html)
-
+    * 2019年统计用区划代码和城乡划分代码（截止时间：2019-10-31，发布时间：2020-02-25）
+* 经纬度更新时间 2020-08-04
+    
 *   参考 [行政区划代码 adcode 映射表](http://mapopen-pub-webserviceapi.bj.bcebos.com/geocoding/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E6%B8%85%E5%8D%95%20V3.0%209.03.xlsx)
 
 ## 下载

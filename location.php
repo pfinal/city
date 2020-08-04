@@ -12,12 +12,15 @@ $config = [
 $db = new \PFinal\Database\Builder($config);
 
 $all = $db->table('region')->findAll();
-$all = array_column($all, null, 'code');
+$all = array_column($all, null, 'id');
 
 foreach ($all as $item) {
+    if(!empty($item['lng'])){
+        continue;
+    }
 
-    $ak = '';
-    $address = getFullName($item['code'], $all);
+    $ak = 'xxx';
+    $address = getFullName($item['id'], $all);
     echo $address . "\r\n";
     $url = 'http://api.map.baidu.com/geocoder/v2/?address=' . $address . '&output=json&ak=' . $ak;
 
@@ -45,11 +48,11 @@ foreach ($all as $item) {
 
     $arr = json_decode($json, true);
 
-    file_put_contents(' log.txt', $address . ' ' . $json . "\n", FILE_APPEND);
+    file_put_contents('log.txt', $address . ' ' . $json . "\n", FILE_APPEND);
 
     if (isset($arr['status']) && $arr['status'] == 0) {
         $row = $db->table('region')
-            ->wherePk($item['code'])
+            ->wherePk($item['id'])
             ->update($arr['result']['location']);
 
         if ($row != 1) {
@@ -74,18 +77,18 @@ function getFullName($code, $all)
 
     $name = $one['name'];
 
-    if ($one['parent_code'] == 0) {
+    if ($one['parent_id'] == '') {
         return $name;
     }
 
-    $parent = $all[$one['parent_code']];
+    $parent = $all[$one['parent_id']];
 
     $name = $parent['name'] . $name;
 
-    if ($parent['parent_code'] == 0) {
+    if ($parent['parent_id'] == '') {
         return $name;
     }
 
-    $pprent = $all[$parent['parent_code']];
+    $pprent = $all[$parent['parent_id']];
     return $pprent['name'] . $name;
 }

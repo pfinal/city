@@ -16,13 +16,13 @@ $config = [
 $db = new \PFinal\Database\Builder($config);
 
 foreach ($all as $p) {
-    if (!isset($p['childs'])) {
+    if (!isset($p['children'])) {
         echo 'error 1';
         exit;
     }
 
     //省
-    $data = ['code' => $p['code'], 'name' => $p['name'], 'parent_code' => 0];
+    $data = ['id' => $p['code'], 'name' => $p['name'], 'parent_id' => ''];
     if (!$db->table('region')->insert($data)) {
         echo 'db error 1';
         exit;
@@ -30,26 +30,22 @@ foreach ($all as $p) {
 
     echo '<div style="color:red">' . $p['code'] . ' ' . $p['name'] . '</div>';
 
-    foreach ($p['childs'] as $c) {
-        //echo '<div style="color:blue;">' . $c['code'] . ' ' . $c['name'] . '</div>';
-
+    foreach ($p['children'] as $c) {
         //市
-        $data = ['code' => $c['code'], 'name' => $c['name'], 'parent_code' => $p['code']];
+        $data = ['id' => $c['code'], 'name' => $c['name'], 'parent_id' => $p['code']];
         if (!$db->table('region')->insert($data)) {
             echo 'db error 2';
             exit;
         }
 
-        if (!isset($c['childs'])) {
+        if (!isset($c['children'])) {
             echo 'error 2';
             exit;
         }
 
         //区
-        foreach ($c['childs'] as $a) {
-            //echo $a['code'] . ' ' . $a['name'] . '<br>';
-
-            $data = ['code' => $a['code'], 'name' => $a['name'], 'parent_code' => $c['code']];
+        foreach ($c['children'] as $a) {
+            $data = ['id' => $a['code'], 'name' => $a['name'], 'parent_id' => $c['code']];
             if (!$db->table('region')->insert($data)) {
                 echo 'db error 3';
                 exit;

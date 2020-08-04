@@ -1,10 +1,11 @@
-DROP TABLE IF EXISTS `region`;
-CREATE TABLE IF NOT EXISTS `region` (
-  `code` int NOT NULL PRIMARY KEY,
+
+CREATE TABLE `region` (
+  `id` varchar(32) NOT NULL DEFAULT '',
   `name` varchar(50) NOT NULL,
-  `parent_code` int NOT NULL,
-  `lng` varchar(50) NOT NULL DEFAULT '', -- lng	经度值
-  `lat` varchar(50) NOT NULL DEFAULT '', -- lat	纬度值
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COMMENT='区域';
+  `parent_id` varchar(32) NOT NULL DEFAULT '',
+  `lng` varchar(50) NOT NULL DEFAULT '',
+  `lat` varchar(50) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='区域';
